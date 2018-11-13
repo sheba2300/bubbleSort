@@ -6,7 +6,7 @@ public class BubbleSort {
         public void swap(int[] array, int posOne, int posTwo)
         {
             int placeHolder = array[posOne];
-            array[posOne]
+            array[posOne];
         }
     }
 }
