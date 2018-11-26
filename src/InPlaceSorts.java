@@ -1,9 +1,9 @@
 public class InPlaceSorts {
 
-    public static void generateIntList(int[] arr, int numCount) {
+    public static void generateIntList(int[] arr, int numCount, int range) {
 
         for (int x = 0; x < numCount; x++) {
-            arr[x] = (int) (Math.random() * numCount);
+            arr[x] = (int) (Math.random() * range);
         }
 
     }
@@ -18,65 +18,62 @@ public class InPlaceSorts {
 
         for (int x = 0; x < numCount; x++)
         {
-           arr[x] = wordList[(int)(Math.random() * wordList.length-1)];
-
+            arr[x] = wordList[(int) (Math.random() * wordList.length)];
         }
     }
 
-    public static void swap(String[] array, int posOne, int posTwo) {
+    public static void swapString(String[] array, int posOne, int posTwo) {
         String placeHolder = array[posOne];
         array[posOne] = array[posTwo];
         array[posTwo] = placeHolder;
     }
 
-    public static void bubbleSort(String[] arr) {
-        int range = arr.length;
-        boolean noSwap = false;
-        int noSwapIdx = 0;
-        while (range >= 0) {
-            for (int x = 0; x < range - 2; x++) {
-                if (arr[x].compareTo(arr[x + 1]) > 0) {
-                    swap(arr, x, x + 1);
-                    noSwap = false;
-                } else {
-                    noSwap = true;
-                    noSwapIdx = x;
-                }
-            }
-            if (noSwap)
-                range = noSwapIdx - 1;
-            System.out.println(range);
-        }
+    public static void swapDouble(double[] array, int posOne, int posTwo)
+    {
+        double placeHolder = array[posOne];
+        array[posOne] = array[posTwo];
+        array[posTwo] = placeHolder;
     }
 
-    public static void bubbleSortTwo(String[] arr) {
+
+    public static void bubbleSort(String[] arr) {
         int swap = 1;
         while (swap != 0) {
             swap = 0;
             for (int x = 0; x < arr.length - 1; x++) {
                 if (arr[x].compareTo(arr[x + 1]) >0) {
                     swap++;
-                    swap(arr, x, x + 1);
+                    swapString(arr, x, x + 1);
                 }
             }
         }
     }
+    public static void insertionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];
+            int x = i - 1;
+            while ((x > -1) && (arr[x] > key)) {
+                arr[x + 1] = arr[x];
+                x--;
+            }
+            arr[x + 1] = key;
+        }
+    }
 
-//    public static void selectionSort(double[] arr) {
-//        int target;
-//        for (int x = 0; x < arr.length; x++) {
-//            target = arr[x];
-//            for (int i = x + 1; i < arr.length - (x + 1); x++) {
-//                System.out.println(target);
-//                System.out.println(arr[i]);
-//                if (target > arr[i]) {
-//                    System.out.println("switch");
-//                    swap(arr, x, i);
-//                }
-//            }
-//
-//        }
-//    }
+    public static void selectionSort(double[] arr)
+    {
+        double target;
+        for (int x = 0; x < arr.length; x++)
+        {
+            target = arr[x];
+            for (int i = x + 1; i < arr.length; i++) {
+                if (target > arr[i]) {
+                    swapDouble(arr, x, i);
+                }
+            }
+        }
+    }
 
     public static void mergeSort(int[] elements) {
         int n = elements.length;
